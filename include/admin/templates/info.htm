@@ -1,0 +1,85 @@
+<script language="JavaScript" type="text/javascript">
+<!--
+  function del ( id1 ) {
+	
+    var x = confirm ( "wirklich loeschen?" );
+		if ( x ) {
+		  document.location.href="admin.php?info-delete-"+id1;
+		}
+	}
+//-->
+</script>
+<SCRIPT language="JavaScript" type="text/javascript">
+  <!--
+
+  var t = 5 // interval in seconds
+ 
+  function LoadImg() {
+  imgsrc = "{img}";
+  document.images.bild.onload = "";
+  tmp = new Date();
+  tmp = "?"+tmp.getTime();
+  document.images.bild.src = imgsrc+tmp;
+  setTimeout("LoadImg()", t*1000);
+  }
+
+  // -->
+  </SCRIPT>
+<script type="text/javascript" src="include/includes/js/bbcode.js"></script>
+<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="include/images/icons/admin/info.png" /></td><td width="30"></td><td valign="bottom"><h1>Info</h1></td></tr></table>
+
+<table width="100%">
+  <tr>
+	  <td valign="top" width="60%">
+	  
+		<form name="form" action="admin.php?info-save" method="POST" enctype="multipart/form-data">
+			<input type="hidden" name="id" value="{id}">
+
+			<table cellspacing="1" cellpadding="10" broder="0" class="border">
+				<tr>
+					<td class="Cmite">Titel</td>
+					<td class="Cnorm"><input size="150" type="text" name="titel" value="{titel}"></td>
+				</tr>
+				<tr>
+					<td class="Cmite">Bild</td>
+                    <td class="Cnorm">
+					<label>
+							<input type="file" name="img" id="img" />
+						</label> 
+						{image}
+					</td>
+				</tr>
+                                <tr>
+					<td class="Cmite">BBCode</td>
+					<td class="Cnorm">{__BBCodeButtons__}</td>
+				</tr>
+				<tr>
+					<td class="Cmite">Text</td>
+					<td class="Cnorm"><textarea cols="150" rows="15" name="txt">{txt}</textarea></td>
+				</tr>
+				<tr>
+					<td class="Cdark"></td>
+					<td class="Cdark"><input type="submit" value="{sub}" name="sub"></td>
+				</tr>
+			</table>
+		</form>
+
+</td><td valign="top" width="40%">
+
+<table cellspacing="1" cellpadding="2" broder="0" align="center" class="border">
+  <tr class="Chead">
+		<td>Titel</td>
+                <td>Bild</td>
+		<td></td>
+		<td></td>
+	</tr>
+	{EXPLODE}
+	<tr class="{class}">
+		<td align="center">{titel}</td>
+        <td align="center"><img width="25" src="{img}" /></td>
+		<td><a href="?info-edit-{id}">Bearbeiten</a></td>
+		<td><a href="javascript:del('{id}')">L&ouml;schen</a></td>
+	</tr>
+
+{EXPLODE}
+</table></td></tr></table>
